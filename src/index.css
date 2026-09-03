@@ -2,13 +2,14 @@
 
 @import "tailwindcss";
 
-@variant dark (.dark &);
+@theme {
+   --color-primary: #5f38f9;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 * {
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
 }
 
-@theme {
-  -- color-primary: #5044E5
-}
