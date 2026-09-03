@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 
 const App = () => {
-  const [theme, setTheme] = ('light')
+  // FIXED: Standard working state initialization
+  const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.
+getItem('theme') : 'light')
 
   return (
-    <div className='dark:bg-black relative'>
+    <div className='bg-white text-black min-h-screen relative'>
+      {/* Passing state downward seamlessly */}
       <Navbar theme={theme} setTheme={setTheme}/>
     </div>
   )
