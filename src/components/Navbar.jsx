@@ -16,12 +16,24 @@ const Navbar = ({theme, setTheme}) => {
     <img src={theme === 'dark' ? assets.logo_dark : assets.logo} 
     alt="logo" className='w-32 sm:w-40'/>
 
-    {/* Responsive mobile panel drawer container */}
-    <div className={`sm:text-sm ${!sidebarOpen ? 
+    {/* previous version
+      <div className={`sm:text-sm ${!sidebarOpen ? 
         'max-sm:hidden max-sm:w-0 overflow-hidden' : 'max-sm:flex max-sm:w-60 max-sm:pl-10'}
         max-sm:fixed top-0 bottom-0 right-0 max-sm:min-h-screen max-sm:h-full
         max-sm:flex-col max-sm:bg-primary max-sm:text-white max-sm:pt-20 flex
         sm:items-center gap-5 transition-all`}>
+     */}
+    <div className={`
+    /* Base Mobile Styles (Drawer Mode) */
+    max-sm:fixed max-sm:top-0 max-sm:bottom-0 max-sm:right-0 
+    max-sm:min-h-screen max-sm:h-full max-sm:w-60 max-sm:pl-10 max-sm:pt-20 
+    max-sm:flex-col max-sm:bg-primary max-sm:text-white max-sm:z-50
+    max-sm:transition-transform max-sm:duration-300 max-sm:ease-in-out
+    ${sidebarOpen ? 'max-sm:translate-x-0' : 'max-sm:translate-x-full'}
+
+    /* Large Screen Styles (Standard Navbar Row) */
+    flex sm:flex-row sm:items-center sm:gap-5 sm:text-sm sm:static sm:h-auto sm:w-auto sm:p-0
+`}>
 
         <img src={assets.close_icon} alt='close'
         className='w-5 absolute right-4 top-4 sm:hidden cursor-pointer'
