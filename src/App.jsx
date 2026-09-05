@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from './components/Navbar'
+import Hero from './components/Hero'
 
 const App = () => {
   // FIXED: Standard working state initialization
@@ -7,9 +8,10 @@ const App = () => {
 getItem('theme') : 'light')
 
   return (
-    <div className='bg-white text-black min-h-screen relative'>
+    <div className='dark:bg-black relative'>
       {/* Passing state downward seamlessly */}
       <Navbar theme={theme} setTheme={setTheme}/>
+      <Hero />
     </div>
   )
 }
