@@ -6,7 +6,8 @@ import Services from "./components/Services";
 import OurWork from "./components/OurWork";
 import Teams from "./components/Teams";
 import ContactUs from "./components/ContactUs";
-
+import {Toaster} from 'react-hot-toast'
+import Footer from "./components/Footer";
 const App = () => {
   // FIXED: Standard working state initialization
   const [theme, setTheme] = useState(
@@ -15,6 +16,7 @@ const App = () => {
 
   return (
     <div className="dark:bg-black relative">
+      <Toaster />
       {/* Passing state downward seamlessly */}
       <Navbar theme={theme} setTheme={setTheme} />
       <Hero />
@@ -23,6 +25,7 @@ const App = () => {
       <OurWork />
       <Teams />
       <ContactUs />
+      <Footer theme={theme} />
     </div>
   );
 };
