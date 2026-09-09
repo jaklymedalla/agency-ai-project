@@ -1,65 +1,99 @@
-import React, { useState } from 'react'
-import assets from '../assets/assets'
-import ThemeToggleBtn from './ThemeToggleBtn'
+import React, { useState } from "react";
+import assets from "../assets/assets";
+import ThemeToggleBtn from "./ThemeToggleBtn";
 
-const Navbar = ({theme, setTheme}) => {
-
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+const Navbar = ({ theme, setTheme }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     /* LOCAL FIX: We manually append the 'dark' utility rule into your template layout block */
-    <div className={`flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 
+    <div
+      className={`flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 
     py-4 sticky top-0 z-20 backdrop-blur-xl font-medium transition-all duration-300
-    ${theme === 'dark' ? 'dark bg-gray-900/90 text-white' : 'bg-white/50 text-gray-700'}`}
+    ${theme === "dark" ? "dark bg-gray-900/90 text-white" : "bg-white/50 text-gray-700"}`}
     >
+      <img
+        src={theme === "dark" ? assets.logo_dark : assets.logo}
+        alt="logo"
+        className="w-32 sm:w-40"
+      />
 
-    <img src={theme === 'dark' ? assets.logo_dark : assets.logo} 
-    alt="logo" className='w-32 sm:w-40'/>
-
-    {/* previous version
+      {/* previous version
       <div className={`sm:text-sm ${!sidebarOpen ? 
         'max-sm:hidden max-sm:w-0 overflow-hidden' : 'max-sm:flex max-sm:w-60 max-sm:pl-10'}
         max-sm:fixed top-0 bottom-0 right-0 max-sm:min-h-screen max-sm:h-full
         max-sm:flex-col max-sm:bg-primary max-sm:text-white max-sm:pt-20 flex
         sm:items-center gap-5 transition-all`}>
      */}
-    <div className={`
+      <div
+        className={`
     /* Base Mobile Styles (Drawer Mode) */
     max-sm:fixed max-sm:top-0 max-sm:bottom-0 max-sm:right-0 
     max-sm:min-h-screen max-sm:h-full max-sm:w-60 max-sm:pl-10 max-sm:pt-20 
     max-sm:flex-col max-sm:bg-primary max-sm:text-white max-sm:z-50
     max-sm:transition-transform max-sm:duration-300 max-sm:ease-in-out
-    ${sidebarOpen ? 'max-sm:translate-x-0' : 'max-sm:translate-x-full'}
+    ${sidebarOpen ? "max-sm:translate-x-0" : "max-sm:translate-x-full"}
 
     /* Large Screen Styles (Standard Navbar Row) */
     flex sm:flex-row sm:items-center sm:gap-5 sm:text-sm sm:static sm:h-auto sm:w-auto sm:p-0
-`}>
-
-        <img src={assets.close_icon} alt='close'
-        className='w-5 absolute right-4 top-4 sm:hidden cursor-pointer'
-        onClick={() => setSidebarOpen(false)}
+`}
+      >
+        <img
+          src={assets.close_icon}
+          alt="close"
+          className="w-5 absolute right-4 top-4 sm:hidden cursor-pointer"
+          onClick={() => setSidebarOpen(false)}
         />
 
-        <a href="#" className='sm:hover:border-b' onClick={() => setSidebarOpen(false)}>Home</a>
-        <a href="#services" className='sm:hover:border-b' onClick={() => setSidebarOpen(false)}>Services</a>
-        <a href="#our-work" className='sm:hover:border-b' onClick={() => setSidebarOpen(false)}>Our Work</a>
-        <a href="#contact-us" className='sm:hover:border-b' onClick={() => setSidebarOpen(false)}>Contact Us</a>
-    </div>
+        <a
+          href="#"
+          className="sm:hover:border-b"
+          onClick={() => setSidebarOpen(false)}
+        >
+          Home
+        </a>
+        <a
+          href="#services"
+          className="sm:hover:border-b"
+          onClick={() => setSidebarOpen(false)}
+        >
+          Services
+        </a>
+        <a
+          href="#our-work"
+          className="sm:hover:border-b"
+          onClick={() => setSidebarOpen(false)}
+        >
+          Our Work
+        </a>
+        <a
+          href="#contact-us"
+          className="sm:hover:border-b"
+          onClick={() => setSidebarOpen(false)}
+        >
+          Contact Us
+        </a>
+      </div>
 
-    <div className='flex items-center gap-4 z-30 relative'>
+      <div className="flex items-center gap-4 z-30 relative">
         <ThemeToggleBtn theme={theme} setTheme={setTheme} />
 
-        <img src={theme === 'dark' ? assets.menu_icon_dark : assets.menu_icon} 
-        onClick={() => setSidebarOpen(true)} className='w-8 sm:hidden cursor-pointer'/>
+        <img
+          src={theme === "dark" ? assets.menu_icon_dark : assets.menu_icon}
+          onClick={() => setSidebarOpen(true)}
+          className="w-8 sm:hidden cursor-pointer"
+        />
 
-        <a href="#contact-us" className='text-sm max-sm:hidden flex items-center gap-2 bg-primary text-white
-        px-6 py-2 rounded-full cursor-pointer hover:scale-103 transition-all'>
-        Connect <img src={assets.arrow_icon} width={14} alt="connect" />
+        <a
+          href="#contact-us"
+          className="text-sm max-sm:hidden flex items-center gap-2 bg-primary text-white
+        px-6 py-2 rounded-full cursor-pointer hover:scale-103 transition-all"
+        >
+          Connect <img src={assets.arrow_icon} width={14} alt="connect" />
         </a>
+      </div>
     </div>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Navbar
+export default Navbar;
