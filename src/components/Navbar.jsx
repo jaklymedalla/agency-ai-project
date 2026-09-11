@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import assets from "../assets/assets";
 import ThemeToggleBtn from "./ThemeToggleBtn";
+import { motion } from "motion/react";
 
 const Navbar = ({ theme, setTheme }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     /* LOCAL FIX: We manually append the 'dark' utility rule into your template layout block */
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={`flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 
     py-4 sticky top-0 z-20 backdrop-blur-xl font-medium transition-all duration-300
     ${theme === "dark" ? "dark bg-gray-900/90 text-white" : "bg-white/50 text-gray-700"}`}
@@ -92,7 +96,7 @@ const Navbar = ({ theme, setTheme }) => {
           Connect <img src={assets.arrow_icon} width={14} alt="connect" />
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
