@@ -9,7 +9,11 @@ const ContactUs = () => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    formData.append("access_key", "9b4fedaa-b44d-46c8-b602-9bf9058a73af");
+    
+    // Dynamically pulls your key from Vite environment variables safely
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
+    formData.append("access_key", accessKey);
+
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
